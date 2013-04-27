@@ -1,0 +1,12 @@
+This project is about implementing text indentation in iOS.
+("The placement of text farther to the right to separate it from surrounding text") 
+
+I couldn't find an easy way to create a text list with indentation like the following example:
+
+1. This is the first section.
+2. This is the second one,
+   with two lines and text indentation.
+3. This is the third.
+
+So I created a simple class to achieve this effect.
+
