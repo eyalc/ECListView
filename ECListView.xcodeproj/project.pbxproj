@@ -18,6 +18,9 @@
 		52EE4218172C4A94007590A9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EE4217172C4A94007590A9 /* Default-568h@2x.png */; };
 		52EE421B172C4A94007590A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EE421A172C4A94007590A9 /* ViewController.m */; };
 		52EE421E172C4A94007590A9 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EE421C172C4A94007590A9 /* ViewController.xib */; };
+		52EE4226172C51CE007590A9 /* ECListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EE4225172C51CE007590A9 /* ECListView.m */; };
+		52EE4229172C853C007590A9 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EE4227172C853C007590A9 /* check@2x.png */; };
+		52EE422A172C853C007590A9 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EE4228172C853C007590A9 /* check.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,10 @@
 		52EE4219172C4A94007590A9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		52EE421A172C4A94007590A9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		52EE421D172C4A94007590A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		52EE4224172C51CE007590A9 /* ECListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECListView.h; sourceTree = "<group>"; };
+		52EE4225172C51CE007590A9 /* ECListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECListView.m; sourceTree = "<group>"; };
+		52EE4227172C853C007590A9 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+		52EE4228172C853C007590A9 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +90,16 @@
 		52EE4207172C4A93007590A9 /* ECListView */ = {
 			isa = PBXGroup;
 			children = (
+				52EE4227172C853C007590A9 /* check@2x.png */,
+				52EE4228172C853C007590A9 /* check.png */,
 				52EE4210172C4A93007590A9 /* AppDelegate.h */,
 				52EE4211172C4A93007590A9 /* AppDelegate.m */,
 				52EE4219172C4A94007590A9 /* ViewController.h */,
 				52EE421A172C4A94007590A9 /* ViewController.m */,
 				52EE421C172C4A94007590A9 /* ViewController.xib */,
 				52EE4208172C4A93007590A9 /* Supporting Files */,
+				52EE4224172C51CE007590A9 /* ECListView.h */,
+				52EE4225172C51CE007590A9 /* ECListView.m */,
 			);
 			path = ECListView;
 			sourceTree = "<group>";
@@ -163,6 +174,8 @@
 				52EE4216172C4A94007590A9 /* Default@2x.png in Resources */,
 				52EE4218172C4A94007590A9 /* Default-568h@2x.png in Resources */,
 				52EE421E172C4A94007590A9 /* ViewController.xib in Resources */,
+				52EE4229172C853C007590A9 /* check@2x.png in Resources */,
+				52EE422A172C853C007590A9 /* check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +189,7 @@
 				52EE420E172C4A93007590A9 /* main.m in Sources */,
 				52EE4212172C4A93007590A9 /* AppDelegate.m in Sources */,
 				52EE421B172C4A94007590A9 /* ViewController.m in Sources */,
+				52EE4226172C51CE007590A9 /* ECListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +269,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ECListView/ECListView-Prefix.pch";
 				INFOPLIST_FILE = "ECListView/ECListView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,6 +281,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ECListView/ECListView-Prefix.pch";
 				INFOPLIST_FILE = "ECListView/ECListView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

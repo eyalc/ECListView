@@ -8,6 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ECListView : UIView
+typedef enum {
+    ListStyleNumbered,
+    ListStyleBulleted,
+    ListStyleImage
+}ListStyle;
+
+@interface ECListView : UIView {
+    BOOL _shouldRebuildList;
+}
+
+@property (nonatomic) ListStyle listStyle;
+@property (nonatomic, retain) UIFont *font;
+@property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic) CGFloat indentation;
+@property (nonatomic) CGFloat itemsSpacing;
+@property (nonatomic, retain) UIImage *itemImage;
+
+- (id)initWithFrame:(CGRect)frame textItems:(NSArray *)items listStyle:(ListStyle)style;
+
+- (void)rebuildList;
+
+- (CGFloat)calHeight;
+
 
 @end

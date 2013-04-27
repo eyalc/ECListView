@@ -8,24 +8,220 @@
 
 #import "ECListView.h"
 
-@implementation ECListView
+@interface ECListView ()
+@property (nonatomic, retain) NSArray *items;
+@end
 
-- (id)initWithFrame:(CGRect)frame
-{
+@implementation ECListView
+@synthesize items = _items;
+@synthesize font = _font;
+@synthesize textColor = _textColor;
+@synthesize indentation = _indentation;
+@synthesize itemsSpacing = _itemsSpacing;
+@synthesize listStyle = _listStyle;
+@synthesize itemImage = _itemImage;
+
+- (id)initWithFrame:(CGRect)frame textItems:(NSArray *)items listStyle:(ListStyle)style {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.items = items;
+        self.listStyle = style;
+        
+        self.backgroundColor = [UIColor clearColor];
+        
+        [self rebuildList];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)dealloc {
+    [_items release];
+    [_font release];
+    [_textColor release];
+    [_itemImage release];
+    
+    [super dealloc];
 }
-*/
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (_shouldRebuildList) {
+        _shouldRebuildList = NO;
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        
+        CGRect sectionFrame;
+        CGFloat width = self.frame.size.width;
+        CGFloat xOffset = self.indentation;
+        CGFloat height = 0.0;
+
+        NSInteger numericItem = 1;
+        
+        for (int i=0; i < self.items.count; i++) {
+            id item = [self.items objectAtIndex:i];
+            if ([item isKindOfClass:[NSString class]]) {
+                NSString *text = (NSString *)item;
+                
+                // item bullet
+                if (self.listStyle == ListStyleImage) {
+                    UIImageView *iv = [[UIImageView alloc] initWithImage:self.itemImage];
+                    iv.frame = CGRectMake(0.0, height, iv.bounds.size.width, iv.bounds.size.height);
+                    xOffset = iv.bounds.size.width + self.indentation;
+                    [self addSubview:iv];
+                    [iv release];
+                } else {
+                    UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, height, 0.0, 0.0)];
+                    itemLabel.backgroundColor = [UIColor clearColor];
+                    itemLabel.textAlignment = UITextAlignmentLeft;
+                    itemLabel.font = self.font;
+                    itemLabel.textColor = self.textColor;
+                    
+                    NSString *itemStr = @"";
+                    if (self.listStyle == ListStyleNumbered) {
+                        itemStr = [NSString stringWithFormat:@"%d.", numericItem++];
+                    } else if (self.listStyle == ListStyleBulleted) {
+                        itemStr = @"•";
+                    }
+                    
+                    itemLabel.text = itemStr;
+                    [itemLabel sizeToFit];
+                    
+                    xOffset = itemLabel.bounds.size.width + self.indentation;
+                    [self addSubview:itemLabel];
+                    [itemLabel release];
+                }
+
+                sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
+                
+                // item text
+                UILabel *textLabel = [[UILabel alloc] initWithFrame:sectionFrame];
+                textLabel.backgroundColor = [UIColor clearColor];
+                textLabel.numberOfLines = 0;
+                textLabel.textColor = self.textColor;
+                textLabel.font = self.font;
+                textLabel.text = text;
+                [textLabel sizeToFit];
+                
+                CGFloat sectionSpace = i < self.items.count - 1 ? self.itemsSpacing : 0.0;
+                height += textLabel.bounds.size.height + sectionSpace;
+                sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
+                
+                [self addSubview:textLabel];
+                [textLabel release];
+            }
+        }
+        
+        CGRect newFrame = self.frame;
+        newFrame.size.height = height;
+        self.frame = newFrame;
+    }
+}
+
+- (void)rebuildList {
+    _shouldRebuildList = YES;
+    [self setNeedsLayout];
+}
+
+- (CGFloat)calHeight {
+    CGRect sectionFrame;
+    CGFloat width = self.frame.size.width;
+    CGFloat xOffset = self.indentation;
+    CGFloat height = 0.0;
+    
+    NSInteger numericItem = 1;
+    
+    for (int i=0; i < self.items.count; i++) {
+        id item = [self.items objectAtIndex:i];
+        if ([item isKindOfClass:[NSString class]]) {
+            NSString *text = (NSString *)item;
+            
+            if (self.listStyle == ListStyleImage) {
+                UIImageView *iv = [[UIImageView alloc] initWithImage:self.itemImage];
+                iv.frame = CGRectMake(0.0, height, iv.bounds.size.width, iv.bounds.size.height);
+                xOffset = iv.bounds.size.width + self.indentation;
+                [iv release];
+            } else {
+                UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, height, 0.0, 0.0)];
+                itemLabel.font = self.font;
+                
+                NSString *itemStr = @"";
+                if (self.listStyle == ListStyleNumbered) {
+                    itemStr = [NSString stringWithFormat:@"%d.", numericItem++];
+                } else if (self.listStyle == ListStyleBulleted) {
+                    itemStr = @"•";
+                }
+                
+                itemLabel.text = itemStr;
+                [itemLabel sizeToFit];
+                
+                xOffset = itemLabel.bounds.size.width + self.indentation;
+                [itemLabel release];
+            }
+
+            sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
+            
+            UILabel *textLabel = [[UILabel alloc] initWithFrame:sectionFrame];
+            textLabel.numberOfLines = 0;
+            textLabel.font = self.font;
+            textLabel.text = text;
+            [textLabel sizeToFit];
+            
+            CGFloat sectionSpace = i < self.items.count - 1 ? self.itemsSpacing : 0.0;
+            height += textLabel.bounds.size.height + sectionSpace;
+            sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
+            
+            [textLabel release];
+        }
+    }
+    
+    return height;
+}
+
+#pragma mark - Setters
+
+- (void)setListStyle:(ListStyle)listStyle {
+    if (_listStyle != listStyle) {
+        _listStyle = listStyle;
+        [self rebuildList];
+    }
+}
+
+- (void)setItemsSpacing:(CGFloat)itemsSpacing {
+    if (_itemsSpacing != itemsSpacing) {
+        _itemsSpacing = itemsSpacing;
+        [self rebuildList];
+    }
+}
+
+- (void)setIndentation:(CGFloat)indentation {
+    if (_indentation != indentation) {
+        _indentation = indentation;
+        [self rebuildList];
+    }
+}
+
+- (void)setFont:(UIFont *)font {
+    if (_font != font) {
+        [_font release];
+        _font = [font retain];
+        [self rebuildList];
+    }
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    if (_textColor != textColor) {
+        [_textColor release];
+        _textColor = [textColor retain];
+        [self rebuildList];
+    }
+}
+
+- (void)setItemImage:(UIImage *)itemImage {
+    if (_itemImage != itemImage) {
+        [_itemImage release];
+        _itemImage = [itemImage retain];
+        [self rebuildList];
+    }
+}
 
 @end
