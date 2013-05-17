@@ -1,3 +1,6 @@
+ECListView
+==============
+
 A simple component to present a bulleted/numeric/custom list view with text indentation.
 
 This project is about implementing text indentation in iOS.
