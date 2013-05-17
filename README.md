@@ -15,10 +15,10 @@ Usage
 
 Just copy the ```ECListView.h``` and ```ECListView.m``` files to your project.  
   
+  
 **Example Code**  
 
 Adding a numbered list view:
-
 ```
     NSArray *items = [NSArray arrayWithObjects:
                       @"This is the first list view item.",
@@ -33,7 +33,15 @@ Adding a numbered list view:
     [self.view addSubview:listView];
     [listView release];
 ```
-
+  
+You can configure the look of the list as you want:  
+```
+    // optional configuration
+    listView.indentation = 8.0;
+    listView.itemsSpacing = 10.0;
+    listView.textColor = [UIColor darkGrayColor];
+    listView.font = [UIFont systemFontOfSize:18.0];
+```
 
 **License**
 ==============
