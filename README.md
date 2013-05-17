@@ -1,22 +1,38 @@
 ECListView
 ==============
 
-A simple component to present a bulleted/numeric/custom list view with text indentation.
-
-This project is about implementing text indentation in iOS.
+A simple component to present a bulleted/numbered/custom list view with text indentation.
 ("The placement of text farther to the right to separate it from surrounding text") 
 
-I couldn't find an easy way to create a text list with indentation like the following example:
+I just couldn't find an easy way to create a text list with indentation on iOS, so I decided to create one myself.
 
-1. This is the first section.
-2. This is the second one,
-   with two lines and text indentation.
-3. This is the third.
 
-So I created a simple class to achieve this effect.
-
---------------
+==============
 ![ECListView](https://github.com/eyalc/ECListView/raw/master/ECListView/ss.png)
+
+Usage
+==============
+
+Just copy the ```ECListView.h``` and ```ECListView.m``` files to your project.  
+  
+**Example Code**  
+
+Adding a numbered list view:
+
+```
+    NSArray *items = [NSArray arrayWithObjects:
+                      @"This is the first list view item.",
+                      @"This is the second one that will trigger a line break.",
+                      @"This is the third one.",
+                      nil];  
+                      
+    ECListView *listView = [[ECListView alloc] initWithFrame:CGRectMake(20.0, 50.0, 280.0, 0.0)
+                                                   textItems:items
+                                                   listStyle:ListStyleNumbered];  
+  
+    [self.view addSubview:listView];
+    [listView release];
+```
 
 
 **License**
