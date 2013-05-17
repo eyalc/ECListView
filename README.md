@@ -15,11 +15,12 @@ I couldn't find an easy way to create a text list with indentation like the foll
 
 So I created a simple class to achieve this effect.
 
----------------
+--------------
 ![ECListView](https://github.com/eyalc/ECListView/raw/master/ECListView/ss.png)
 
 
-License
+**License**
+==============
 
 ```
 Permission is hereby granted, free of charge, to any person obtaining a copy of
