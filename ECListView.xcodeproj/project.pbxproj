@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52EB3D131746338800068AC4 /* ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EB3D121746338800068AC4 /* ss.png */; };
 		52EE4202172C4A93007590A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EE4201172C4A93007590A9 /* UIKit.framework */; };
 		52EE4204172C4A93007590A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EE4203172C4A93007590A9 /* Foundation.framework */; };
 		52EE4206172C4A93007590A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EE4205172C4A93007590A9 /* CoreGraphics.framework */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52EB3D121746338800068AC4 /* ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss.png; sourceTree = "<group>"; };
 		52EE41FD172C4A93007590A9 /* ECListView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECListView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EE4201172C4A93007590A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52EE4203172C4A93007590A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -90,6 +92,7 @@
 		52EE4207172C4A93007590A9 /* ECListView */ = {
 			isa = PBXGroup;
 			children = (
+				52EB3D121746338800068AC4 /* ss.png */,
 				52EE4227172C853C007590A9 /* check@2x.png */,
 				52EE4228172C853C007590A9 /* check.png */,
 				52EE4210172C4A93007590A9 /* AppDelegate.h */,
@@ -176,6 +179,7 @@
 				52EE421E172C4A94007590A9 /* ViewController.xib in Resources */,
 				52EE4229172C853C007590A9 /* check@2x.png in Resources */,
 				52EE422A172C853C007590A9 /* check.png in Resources */,
+				52EB3D131746338800068AC4 /* ss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				52EE4223172C4A94007590A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
