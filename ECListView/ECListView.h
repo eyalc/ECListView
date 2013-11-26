@@ -39,11 +39,11 @@ typedef enum {
 }
 
 @property (nonatomic) ListStyle listStyle;
-@property (nonatomic, retain) UIFont *font;
-@property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, strong) UIFont *font;
+@property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic) CGFloat indentation;
 @property (nonatomic) CGFloat itemsSpacing;
-@property (nonatomic, retain) UIImage *itemImage;
+@property (nonatomic, strong) UIImage *itemImage;
 
 - (id)initWithFrame:(CGRect)frame textItems:(NSArray *)items listStyle:(ListStyle)style;
 

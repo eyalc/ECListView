@@ -29,7 +29,7 @@
 #import "ECListView.h"
 
 @interface ECListView ()
-@property (nonatomic, retain) NSArray *items;
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation ECListView
@@ -54,14 +54,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [_items release];
-    [_font release];
-    [_textColor release];
-    [_itemImage release];
-    
-    [super dealloc];
-}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -88,7 +80,6 @@
                     iv.frame = CGRectMake(0.0, height, iv.bounds.size.width, iv.bounds.size.height);
                     xOffset = iv.bounds.size.width + self.indentation;
                     [self addSubview:iv];
-                    [iv release];
                 } else {
                     UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, height, 0.0, 0.0)];
                     itemLabel.backgroundColor = [UIColor clearColor];
@@ -108,7 +99,6 @@
                     
                     xOffset = itemLabel.bounds.size.width + self.indentation;
                     [self addSubview:itemLabel];
-                    [itemLabel release];
                 }
 
                 sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
@@ -127,7 +117,6 @@
                 sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
                 
                 [self addSubview:textLabel];
-                [textLabel release];
             }
         }
         
@@ -159,7 +148,6 @@
                 UIImageView *iv = [[UIImageView alloc] initWithImage:self.itemImage];
                 iv.frame = CGRectMake(0.0, height, iv.bounds.size.width, iv.bounds.size.height);
                 xOffset = iv.bounds.size.width + self.indentation;
-                [iv release];
             } else {
                 UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, height, 0.0, 0.0)];
                 itemLabel.font = self.font;
@@ -175,7 +163,6 @@
                 [itemLabel sizeToFit];
                 
                 xOffset = itemLabel.bounds.size.width + self.indentation;
-                [itemLabel release];
             }
 
             sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
@@ -190,7 +177,6 @@
             height += textLabel.bounds.size.height + sectionSpace;
             sectionFrame = CGRectMake(xOffset, height, width - xOffset, 0.0);
             
-            [textLabel release];
         }
     }
     
@@ -222,24 +208,21 @@
 
 - (void)setFont:(UIFont *)font {
     if (_font != font) {
-        [_font release];
-        _font = [font retain];
+        _font = font;
         [self rebuildList];
     }
 }
 
 - (void)setTextColor:(UIColor *)textColor {
     if (_textColor != textColor) {
-        [_textColor release];
-        _textColor = [textColor retain];
+        _textColor = textColor;
         [self rebuildList];
     }
 }
 
 - (void)setItemImage:(UIImage *)itemImage {
     if (_itemImage != itemImage) {
-        [_itemImage release];
-        _itemImage = [itemImage retain];
+        _itemImage = itemImage;
         [self rebuildList];
     }
 }
