@@ -56,7 +56,6 @@
     listView.textColor = [UIColor darkGrayColor];
     listView.font = [UIFont systemFontOfSize:18.0];
     [self.view addSubview:listView];
-    [listView release];
 
     
     // bullet list view
@@ -69,7 +68,6 @@
     bulletListView.font = [UIFont systemFontOfSize:15.0];
     
     [self.view addSubview:bulletListView];
-    [bulletListView release];
     
     // image list view
     ECListView *imageListView = [[ECListView alloc] initWithFrame:CGRectMake(20.0, 90.0 + [listView calHeight] + [bulletListView calHeight], 280.0, 0.0)
@@ -82,7 +80,6 @@
     imageListView.itemImage = [UIImage imageNamed:@"check"];
     
     [self.view addSubview:imageListView];
-    [imageListView release];
 }
 
 
