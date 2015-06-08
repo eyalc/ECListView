@@ -83,7 +83,7 @@
                 } else {
                     UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, height, 0.0, 0.0)];
                     itemLabel.backgroundColor = [UIColor clearColor];
-                    itemLabel.textAlignment = UITextAlignmentLeft;
+                    itemLabel.textAlignment = NSTextAlignmentLeft;
                     itemLabel.font = self.font;
                     itemLabel.textColor = self.textColor;
                     
